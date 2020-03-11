@@ -105,13 +105,11 @@ class Response extends IlluminateResponse
     {
         $content = $json->getContent();
 
-        dd($content);
-
         // If the contents of the JsonResponse does not starts with /**/ (typical laravel jsonp response)
         // we assume that it is a valid json response that can be decoded, or we just use the raw jsonp
         // contents for building the response
         if (! Str::startsWith($json->getContent(), '/**/')) {
-            $content = json_decode($json->getContent(), true);
+            //$content = json_decode($json->getContent(), true);
         }
 
         $new = static::create($content, $json->getStatusCode());

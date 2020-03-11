@@ -2,7 +2,7 @@
 
 namespace Fc9\Api\Exception;
 
-use Exception;
+use Throwable;
 use ReflectionFunction;
 use Illuminate\Support\Str;
 use Illuminate\Http\Response;
@@ -74,7 +74,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
      *
      * @return void
      */
-    public function report(Exception $exception)
+    public function report(Throwable $exception)
     {
         $this->parentHandler->report($exception);
     }
@@ -86,7 +86,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
      *
      * @return bool
      */
-    public function shouldReport(Exception $e)
+    public function shouldReport(Throwable $e)
     {
         return true;
     }
@@ -101,7 +101,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
      *
      * @return mixed
      */
-    public function render($request, Exception $exception)
+    public function render($request, Throwable $exception)
     {
         return $this->handle($exception);
     }
@@ -114,7 +114,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
      *
      * @return mixed
      */
-    public function renderForConsole($output, Exception $exception)
+    public function renderForConsole($output, Throwable $exception)
     {
         return $this->parentHandler->renderForConsole($output, $exception);
     }
@@ -140,7 +140,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
      *
      * @return \Illuminate\Http\Response
      */
-    public function handle(Exception $exception)
+    public function handle(Throwable $exception)
     {
         // Convert Eloquent's 500 ModelNotFoundException into a 404 NotFoundHttpException
         if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
@@ -173,7 +173,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
      *
      * @return \Illuminate\Http\Response
      */
-    protected function genericResponse(Exception $exception)
+    protected function genericResponse(Throwable $exception)
     {
         $replacements = $this->prepareReplacements($exception);
 
@@ -197,7 +197,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
      *
      * @return int
      */
-    protected function getStatusCode(Exception $exception)
+    protected function getStatusCode(Throwable $exception)
     {
         if ($exception instanceof ValidationException) {
             return $exception->status;
@@ -213,7 +213,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
      *
      * @return array
      */
-    protected function getHeaders(Exception $exception)
+    protected function getHeaders(Throwable $exception)
     {
         return $exception instanceof HttpExceptionInterface ? $exception->getHeaders() : [];
     }
@@ -225,7 +225,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
      *
      * @return array
      */
-    protected function prepareReplacements(Exception $exception)
+    protected function prepareReplacements(Throwable $exception)
     {
         $statusCode = $this->getStatusCode($exception);
 
@@ -327,7 +327,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
      *
      * @return int
      */
-    protected function getExceptionStatusCode(Exception $exception, $defaultStatusCode = 500)
+    protected function getExceptionStatusCode(Throwable $exception, $defaultStatusCode = 500)
     {
         return ($exception instanceof HttpExceptionInterface) ? $exception->getStatusCode() : $defaultStatusCode;
     }

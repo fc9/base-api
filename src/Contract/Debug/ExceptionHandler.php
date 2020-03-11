@@ -2,7 +2,7 @@
 
 namespace Fc9\Api\Contract\Debug;
 
-use Exception;
+use Throwable;
 
 interface ExceptionHandler
 {
@@ -13,5 +13,5 @@ interface ExceptionHandler
      *
      * @return \Illuminate\Http\Response
      */
-    public function handle(Exception $exception);
+    public function handle(Throwable $exception);
 }

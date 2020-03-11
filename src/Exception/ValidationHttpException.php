@@ -2,7 +2,7 @@
 
 namespace Fc9\Api\Exception;
 
-use Exception;
+use Throwable;
 
 class ValidationHttpException extends ResourceException
 {
@@ -16,7 +16,7 @@ class ValidationHttpException extends ResourceException
      *
      * @return void
      */
-    public function __construct($errors = null, Exception $previous = null, $headers = [], $code = 0)
+    public function __construct($errors = null, Throwable $previous = null, $headers = [], $code = 0)
     {
         parent::__construct(null, $errors, $previous, $headers, $code);
     }

@@ -2,7 +2,7 @@
 
 namespace Fc9\Api\Exception;
 
-use Exception;
+use Throwable;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -26,7 +26,7 @@ class InternalHttpException extends HttpException
      *
      * @return void
      */
-    public function __construct(Response $response, $message = null, Exception $previous = null, array $headers = [], $code = 0)
+    public function __construct(Response $response, $message = null, Throwable $previous = null, array $headers = [], $code = 0)
     {
         $this->response = $response;
 

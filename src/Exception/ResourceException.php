@@ -2,7 +2,7 @@
 
 namespace Fc9\Api\Exception;
 
-use Exception;
+use Throwable;
 use Illuminate\Support\MessageBag;
 use Fc9\Api\Contract\Debug\MessageBagErrors;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -27,7 +27,7 @@ class ResourceException extends HttpException implements MessageBagErrors
      *
      * @return void
      */
-    public function __construct($message = null, $errors = null, Exception $previous = null, $headers = [], $code = 0)
+    public function __construct($message = null, $errors = null, Throwable $previous = null, $headers = [], $code = 0)
     {
         if (is_null($errors)) {
             $this->errors = new MessageBag;

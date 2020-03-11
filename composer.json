@@ -28,7 +28,7 @@
         "illuminate/cache": "~7.1",
         "illuminate/console": "~7.1",
         "illuminate/database": "~7.1",
-        "illuminate/events": "~7.1"laravel-,
+        "illuminate/events": "~7.1",
         "illuminate/filesystem": "~7.1",
         "illuminate/log": "~7.1",
         "illuminate/pagination": "~7.1",

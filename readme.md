@@ -23,7 +23,7 @@ This package provides tools for the following, and more:
 
 ## Documentation
 
-Please refer to our extensive [Wiki documentation](https://github.com/dingo/api/wiki) for more information.
+Please refer to our extensive [Wiki documentation](https://github.com/fc9/api/wiki) for more information.
 
 ## API Boilerplate
 

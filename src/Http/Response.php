@@ -87,7 +87,14 @@ class Response extends IlluminateResponse
      */
     public static function makeFromExisting(IlluminateResponse $old)
     {
-        $new = static::create($old->getOriginalContent(), $old->getStatusCode());
+        $content = $old->getOriginalContent();
+
+        if ( isset($old->getOriginalContent()['error'])) {
+            $content = json_encode( $old->getOriginalContent());
+        }
+
+        $new = static::create($content, $old->getStatusCode());
+        //$new = static::create($old->getOriginalContent(), $old->getStatusCode());
 
         $new->headers = $old->headers;
 

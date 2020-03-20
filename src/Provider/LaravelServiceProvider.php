@@ -17,7 +17,7 @@ use Illuminate\Http\Request as IlluminateRequest;
 use Fc9\Api\Routing\Adapter\Laravel as LaravelAdapter;
 use Illuminate\Contracts\Validation\ValidatesWhenResolved;
 
-class LaravelServiceProvider extends DingoServiceProvider
+class LaravelServiceProvider extends \Fc9\Api\Provider\DingoServiceProvider
 {
     /**
      * Boot the service provider.

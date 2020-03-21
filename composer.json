@@ -16,7 +16,7 @@
     }],
     "require": {
         "php": "~7.2.5",
-        "fc9/blueprint": "~4.0.0",
+        "fc9/blueprint": "^4.1",
         "illuminate/routing": "~7.1",
         "illuminate/support": "~7.1",
         "league/fractal": "~0.17"
